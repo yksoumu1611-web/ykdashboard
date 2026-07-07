@@ -138,7 +138,7 @@ html, body { height: 100%; width: 100%; overflow: hidden; background: #0d1224; f
     <div class="header-right">
       <span class="src-badge" id="src-badge">—</span>
       <div id="clock"></div>
-      <button onclick="openSettings()" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:6px 14px;font-size:15px;cursor:pointer;font-weight:700;">⚙️ 設定</button>
+      <button onclick="(function(){var o=document.getElementById('settings-overlay');o.style.cssText='display:flex;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;align-items:center;justify-content:center';try{document.getElementById('cfg-sheet-id').value=localStorage.getItem('nb_sheetid')||'';document.getElementById('cfg-sheet-name').value=localStorage.getItem('nb_sheetname')||'シート1';}catch(e){};})()" style="background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.5);color:#fff;border-radius:8px;padding:8px 18px;font-size:16px;cursor:pointer;font-weight:800;letter-spacing:1px;">⚙️ 設定</button>
     </div>
   </div>
   <div id="stage"><div class="empty-msg"><div>読み込み中...</div></div></div>
@@ -150,7 +150,7 @@ html, body { height: 100%; width: 100%; overflow: hidden; background: #0d1224; f
 </div>
 
 <!-- SETTINGS PANEL -->
-<div id="settings-overlay">
+<div id="settings-overlay" onclick="if(event.target===this)this.style.display='none'">
   <div id="settings-box">
     <h2>⚙️ 設定 / Cài đặt</h2>
 
@@ -242,7 +242,7 @@ html, body { height: 100%; width: 100%; overflow: hidden; background: #0d1224; f
     </div>
 
     <div class="btn-row" style="margin-top:4px;">
-      <button class="btn btn-ghost" onclick="closeSettings()">✕ 閉じる / Đóng</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('settings-overlay').style.display='none'">✕ 閉じる / Đóng</button>
     </div>
   </div>
 </div>
